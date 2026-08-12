@@ -1,0 +1,10 @@
+PoseTracker React Web SDK
+Copyright (c) 2024–2026 Movelytics SAS. All rights reserved.
+
+PROPRIETARY SOFTWARE LICENSE
+
+This package published under the @pose-tracker scope (the "Software") is
+proprietary to Movelytics SAS ("Licensor").
+
+See the LICENSE file in `@pose-tracker/pose-estimation` for the full terms.
+This React wrapper is governed by the same proprietary license.

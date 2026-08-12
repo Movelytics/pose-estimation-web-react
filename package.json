@@ -1,0 +1,75 @@
+{
+  "name": "@pose-tracker/pose-estimation-web-react",
+  "version": "0.1.0",
+  "private": false,
+  "description": "PoseTracker React (web) pose estimation — thin wrapper over @pose-tracker/pose-estimation-web. Browser camera + canvas, not React Native.",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist/index.js",
+    "dist/index.cjs",
+    "dist/index.d.ts",
+    "dist/index.d.cts",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepack": "npm run build",
+    "pack:dry": "npm pack --dry-run"
+  },
+  "keywords": [
+    "pose-estimation",
+    "react",
+    "movenet",
+    "tensorflow.js",
+    "posetracker",
+    "webcam",
+    "web",
+    "sdk"
+  ],
+  "author": {
+    "name": "Movelytics SAS",
+    "email": "hello@posetracker.com",
+    "url": "https://www.posetracker.com"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/Movelytics/pose-estimation-web-react#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Movelytics/pose-estimation-web-react.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@pose-tracker/pose-estimation-web": "^0.1.0"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "@tensorflow/tfjs": "^4.22.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.4.0"
+  },
+  "bugs": {
+    "url": "https://github.com/Movelytics/pose-estimation-web-react/issues"
+  }
+}

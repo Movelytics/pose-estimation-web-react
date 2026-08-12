@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import { usePoseTrackerContext } from './PoseTrackerProvider';
-import type { SkeletonDefinition } from '@pose-tracker/pose-estimation-web';
+import type {
+  PoseSource,
+  PoseSourceType,
+  SkeletonDefinition,
+} from '@pose-tracker/pose-estimation-web';
 
 export interface PoseCameraProps {
   /** CSS style for the host container (video/canvas fill 100%). */
@@ -8,6 +12,16 @@ export interface PoseCameraProps {
   className?: string;
   /** 'front' | 'back' — mapped to getUserMedia facingMode. Default front. */
   position?: 'front' | 'back';
+  /**
+   * Input mode. Default `camera`.
+   * Pass a full {@link PoseSource} or `'camera' | 'video' | 'image'` with
+   * `sourceUrl` / `sourceFile`.
+   */
+  source?: PoseSource | PoseSourceType;
+  /** URL / object URL for `source: 'video' | 'image'`. */
+  sourceUrl?: string;
+  /** File/Blob for `source: 'video' | 'image'`. */
+  sourceFile?: File | Blob;
   /** Draw navy/gold skeleton overlay. Default true. */
   drawSkeleton?: boolean;
   /** Placement guide while posture.ready === false. Default true. */
@@ -40,6 +54,9 @@ export function PoseCamera({
   style,
   className,
   position,
+  source,
+  sourceUrl,
+  sourceFile,
   drawSkeleton,
   drawPlacementBox,
   placementPaddingPercent,
@@ -63,6 +80,9 @@ export function PoseCamera({
 
     client.updateOptions({
       ...(position ? { position } : {}),
+      ...(source !== undefined ? { source } : {}),
+      ...(sourceUrl !== undefined ? { sourceUrl } : {}),
+      ...(sourceFile !== undefined ? { sourceFile } : {}),
       ...(typeof drawSkeleton === 'boolean' ? { drawSkeleton } : {}),
       ...(typeof drawPlacementBox === 'boolean' ? { drawPlacementBox } : {}),
       ...(typeof placementPaddingPercent === 'number'
@@ -80,7 +100,13 @@ export function PoseCamera({
     const shouldStart = autoStartProp ?? providerAutoStart;
     if (shouldStart && !startedRef.current) {
       startedRef.current = true;
-      client.start().catch(() => {
+      const boot = async (): Promise<void> => {
+        if (source !== undefined) {
+          await client.setSource(source, { sourceUrl, sourceFile });
+        }
+        await client.start();
+      };
+      boot().catch(() => {
         /* errors emitted as events */
       });
     }
@@ -92,6 +118,12 @@ export function PoseCamera({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [client]);
+
+  // Live source switches without remounting the shell.
+  useEffect(() => {
+    if (!startedRef.current || source === undefined) return;
+    void client.setSource(source, { sourceUrl, sourceFile }).catch(() => {});
+  }, [client, source, sourceUrl, sourceFile]);
 
   return (
     <div

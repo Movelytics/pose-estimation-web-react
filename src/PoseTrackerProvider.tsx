@@ -43,6 +43,9 @@ export interface PoseTrackerContextValue {
     model?: PoseTrackerClientOptions['model'],
     modelUrl?: string,
   ) => Promise<void>;
+  setSource: PoseTrackerClient['setSource'];
+  analyze: PoseTrackerClient['analyze'];
+  getSource: PoseTrackerClient['getSource'];
   getAvailableExercises: () => ExerciseConfig[];
   getAvailableCustomExercises: () => ReturnType<PoseTrackerClient['getAvailableCustomExercises']>;
   addEventListener: (listener: PoseTrackerEventListener) => () => void;
@@ -145,6 +148,12 @@ export function PoseTrackerProvider({
       client.setModel(model, modelUrl),
     [client],
   );
+  const setSource = useCallback(
+    (...args: Parameters<PoseTrackerClient['setSource']>) => client.setSource(...args),
+    [client],
+  );
+  const analyze = useCallback(() => client.analyze(), [client]);
+  const getSource = useCallback(() => client.getSource(), [client]);
   const getAvailableExercises = useCallback(() => client.getAvailableExercises(), [client]);
   const getAvailableCustomExercises = useCallback(
     () => client.getAvailableCustomExercises(),
@@ -177,6 +186,9 @@ export function PoseTrackerProvider({
       startExercise,
       stopExercise,
       setModel,
+      setSource,
+      analyze,
+      getSource,
       getAvailableExercises,
       getAvailableCustomExercises,
       addEventListener,
@@ -198,6 +210,9 @@ export function PoseTrackerProvider({
       startExercise,
       stopExercise,
       setModel,
+      setSource,
+      analyze,
+      getSource,
       getAvailableExercises,
       getAvailableCustomExercises,
       addEventListener,

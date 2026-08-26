@@ -17,6 +17,8 @@ import {
 function Screen() {
   usePoseTracker({ onKeypoints: (e) => console.log(e.keypoints.length) });
   return <PoseCamera style={{ height: 480 }} />;
+  // Video / image: <PoseCamera source="image" sourceFile={file} />
+  // or sourceUrl — see docs/MEDIA_SOURCES.md · https://docs.posetracker.com/media-sources
 }
 
 export function App() {

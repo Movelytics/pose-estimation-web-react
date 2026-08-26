@@ -28,6 +28,9 @@ export {
   COCO_KEYPOINT_NAMES,
   SDK_VERSION,
   SDK_NAME,
+  V4_ONLY_EXERCISE_IDS,
+  normalizeEngineChannel,
+  requiresEngineV4,
 } from '@pose-tracker/pose-estimation-web';
 
 export type {
@@ -36,6 +39,7 @@ export type {
   PoseTrackerClientOptions,
   PoseTrackerCallbacks,
   StartExerciseOptions,
+  EngineChannel,
   KeypointsEvent,
   InitializationEvent,
   ErrorEvent,

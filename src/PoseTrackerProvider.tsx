@@ -61,6 +61,10 @@ const PoseTrackerContext = createContext<PoseTrackerContextValue | null>(null);
 
 export interface PoseTrackerProviderProps {
   apiToken?: string;
+  /**
+   * Opt-in V4 engine (`'v4'`). Default `'v3'` — production FSM, unchanged.
+   */
+  engine?: 'v3' | 'v4';
   options?: PoseTrackerClientOptions;
   /**
    * When true, PoseCamera calls `start()` after mount (full cold start).
@@ -74,16 +78,23 @@ export interface PoseTrackerProviderProps {
 
 export function PoseTrackerProvider({
   apiToken,
+  engine,
   options,
   autoStart = true,
   autoPreload = false,
   children,
 }: PoseTrackerProviderProps): React.JSX.Element {
   const merged = useMemo<PoseTrackerClientOptions>(
-    () => ({ ...options, apiToken: apiToken ?? options?.apiToken }),
+    () => ({
+      ...options,
+      apiToken: apiToken ?? options?.apiToken,
+      engine: engine ?? options?.engine,
+    }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       apiToken,
+      engine,
+      options?.engine,
       options?.model,
       options?.modelUrl,
       options?.facingMode,

@@ -13,6 +13,7 @@ Internal policy for editing PoseTracker **web** packages.
 Cross-links:
 
 - Root README → [`../README.md`](../README.md)
+- Camera / video / image inputs → [`MEDIA_SOURCES.md`](./MEDIA_SOURCES.md)
 - RN light (parity source) → `posetracker-rn-sdk/packages/pose-estimation-react-native-light/`
 - Cursor rule → `PoseTracker/.cursor/rules/dual-web-pose-sdks.mdc`
 
@@ -32,6 +33,8 @@ When you edit **one** web package:
 
 - Event shapes / callback names (`onKeypoints`, `onCounter`, `onInitialization`, …)
 - `model` / `modelUrl` / `resolvePoseModel` behavior (default MoveNet URL)
+- `PoseSource` / `setSource` / `analyze` / `getSource` and React `PoseCamera`
+  `source` / `sourceUrl` / `sourceFile` (see [`MEDIA_SOURCES.md`](./MEDIA_SOURCES.md))
 - Watermark / free-tier / features gating
 - Boot loading copy and brand chrome
 - `configure` / `preload` / `startExercise` contract

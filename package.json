@@ -1,6 +1,6 @@
 {
   "name": "@pose-tracker/pose-estimation-web-react",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "PoseTracker React (web) pose estimation — thin wrapper over @pose-tracker/pose-estimation-web. Browser camera + canvas, not React Native.",
   "type": "module",
   "main": "./dist/index.cjs",

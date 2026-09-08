@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1] — 2026-09-08
+
+### Changed
+
+- Depends on `@pose-tracker/pose-estimation-web@0.3.1`.
+- Provider `engine` default is V4 (catalog squat still needs explicit `engine: 'v4'`).
+
 ## [0.3.0] — 2026-08-26
 
 ### Added

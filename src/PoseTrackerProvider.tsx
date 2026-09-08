@@ -62,7 +62,9 @@ const PoseTrackerContext = createContext<PoseTrackerContextValue | null>(null);
 export interface PoseTrackerProviderProps {
   apiToken?: string;
   /**
-   * Opt-in V4 engine (`'v4'`). Default `'v3'` — production FSM, unchanged.
+   * Remote engine. Default `'v4'`. Pass `'v3'` for the production FSM bundle.
+   * Unlabeled `startExercise('squat')` still uses the V3 squat FSM unless this
+   * is explicitly `'v4'`.
    */
   engine?: 'v3' | 'v4';
   options?: PoseTrackerClientOptions;

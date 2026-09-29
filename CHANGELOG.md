@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.4] — 2026-09-29
+
+### Changed
+
+- Depends on `@pose-tracker/pose-estimation-web@0.3.4`.
+
+## [0.3.3] — 2026-09-29
+
+### Changed
+
+- Depends on `@pose-tracker/pose-estimation-web@0.3.3` (same analysis, grade E, and back-flexibility contract).
+
 ## [0.3.1] — 2026-09-08
 
 ### Changed

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.5] — 2026-10-01
+
+### Changed
+
+- Depends on `@pose-tracker/pose-estimation-web@0.3.5`.
+
 ## [0.3.4] — 2026-09-29
 
 ### Changed

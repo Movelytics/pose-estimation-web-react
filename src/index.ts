@@ -54,4 +54,6 @@ export type {
   ExerciseConfig,
   ColdStartMode,
   PreloadOptions,
+  ExternalFrame,
+  ExternalFrameResult,
 } from '@pose-tracker/pose-estimation-web';

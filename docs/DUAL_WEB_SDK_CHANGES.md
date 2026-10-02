@@ -38,6 +38,7 @@ When you edit **one** web package:
 - Watermark / free-tier / features gating
 - Boot loading copy and brand chrome
 - `configure` / `preload` / `startExercise` contract
+- `warmupExternal` / `processFrame` — implement in core, re-export on the React context ([`EXTERNAL_FRAMES.md`](./EXTERNAL_FRAMES.md))
 - Public README examples that show the shared product API
 
 ## Usually core-only

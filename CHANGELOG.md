@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.6] — 2026-10-02
+
+### Added
+
+- `warmupExternal()` and `processFrame()` on `usePoseTracker`, for a camera the app already owns.
+
+### Changed
+
+- Depends on `@pose-tracker/pose-estimation-web@0.3.6`.
+
 ## [0.3.5] — 2026-10-01
 
 ### Changed

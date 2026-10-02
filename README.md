@@ -29,3 +29,28 @@ export function App() {
   );
 }
 ```
+
+## External frames (your camera, our data)
+
+Full guide: https://docs.posetracker.com/external-frames
+
+Optional. Skip `<PoseCamera />` and push your own frames. The SDK draws
+nothing and returns the same data as the camera flow (keypoints,
+posture/placement, counter, form score). See the
+[`pose-estimation-web` README](../pose-estimation-web/README.md#external-frames-your-camera-our-data)
+for the rules: one frame in flight, small frames, no mixing with the camera.
+
+```tsx
+const { warmupExternal, startExercise, processFrame } = usePoseTracker({
+  onCounter: (e) => setReps(e.count),
+});
+
+await warmupExternal();
+startExercise('squat');
+const { dropped, pose, events } = await processFrame({
+  image: bitmap,
+  width: bitmap.width,
+  height: bitmap.height,
+  timestampMs: performance.now(),
+});
+```

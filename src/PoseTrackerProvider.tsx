@@ -45,6 +45,10 @@ export interface PoseTrackerContextValue {
   ) => Promise<void>;
   setSource: PoseTrackerClient['setSource'];
   analyze: PoseTrackerClient['analyze'];
+  /** Opt-in: warm the model for frames from your own camera (no PoseCamera needed). */
+  warmupExternal: PoseTrackerClient['warmupExternal'];
+  /** Infer one frame from your own camera; resolves `{ dropped, pose, events }`. */
+  processFrame: PoseTrackerClient['processFrame'];
   getSource: PoseTrackerClient['getSource'];
   getAvailableExercises: () => ExerciseConfig[];
   getAvailableCustomExercises: () => ReturnType<PoseTrackerClient['getAvailableCustomExercises']>;
@@ -166,6 +170,11 @@ export function PoseTrackerProvider({
     [client],
   );
   const analyze = useCallback(() => client.analyze(), [client]);
+  const warmupExternal = useCallback(() => client.warmupExternal(), [client]);
+  const processFrame = useCallback(
+    (...args: Parameters<PoseTrackerClient['processFrame']>) => client.processFrame(...args),
+    [client],
+  );
   const getSource = useCallback(() => client.getSource(), [client]);
   const getAvailableExercises = useCallback(() => client.getAvailableExercises(), [client]);
   const getAvailableCustomExercises = useCallback(
@@ -201,6 +210,8 @@ export function PoseTrackerProvider({
       setModel,
       setSource,
       analyze,
+      warmupExternal,
+      processFrame,
       getSource,
       getAvailableExercises,
       getAvailableCustomExercises,
@@ -225,6 +236,8 @@ export function PoseTrackerProvider({
       setModel,
       setSource,
       analyze,
+      warmupExternal,
+      processFrame,
       getSource,
       getAvailableExercises,
       getAvailableCustomExercises,

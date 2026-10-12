@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.7] — 2026-10-09
+
+### Changed
+
+- Depends on `@pose-tracker/pose-estimation-web@0.3.7` (Freemium watermark links to posetracker.com).
+
 ## [0.3.6] — 2026-10-02
 
 ### Added
